@@ -8,7 +8,10 @@
 </head>
 <body>
     <form method="post">
+        <h5>Nombre</h5>
         <input  type="text" name="nombre">
+        <h5>Altura (cm)</h5>
+        <input  type="text" name="altura">
         <br><br>
         <input type="date" name="fechanac">
 
@@ -41,9 +44,16 @@ if(isset($_POST["Si"]) && !empty($_POST["Si"])){
         if(($can>=0)&&($can<16)){
             echo $Nombre. ", <br> es menor de edad, no puede ingresar al juego mecanico";
         }else if(($can>=16)&&($can<65)){
-            echo "Bienvenido, cumple con la edad para ingresar al juego mecanico...<br><br>"; 
-            echo "Nombre del usuario: " .$Nombre. "<br>
-                    Ticket N.: " .rand(0001,9999);
+            if($_POST["altura"]>=120)
+            {
+                echo "Bienvenido, cumple con la edad para ingresar al juego mecanico...<br><br>"; 
+                echo "Nombre del usuario: " .$Nombre. "<br>
+                        Ticket N.: " .rand(0001,9999);
+            }
+            else
+            {
+                echo $Nombre. ", <br>su estatura es muy baja para ingresar a este juego mecanico";
+            }
         }else{
             echo $Nombre. ", <br>es demasiado mayor para ingresar a este juego mecanico";
         }
